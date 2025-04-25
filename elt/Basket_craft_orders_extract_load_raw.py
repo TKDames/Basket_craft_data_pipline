@@ -1,14 +1,18 @@
-'''
-1. Import necessary libraries
-2. Load MySQL and destination Postgres connection details.
+"""
+1. Import neceessary libraries.
+2. Load source MYSQL and destination PostGres connection details
 3. Build connection strings and create database engines
-4. Read products table from MySQL and load it into a df
-5. write that df to products table in Postgres (raw schema)
-'''
-
+4. Read products table from MYSQL and load into a dataframe
+5. Write dataframe to products table in Postgres. (raw schema)
+"""
+# %%
+# Import necessary libraries
 import pandas as pd
 from sqlalchemy import create_engine
 
+
+# %% 
+os.environ['MYSQL_USER']
 #%%
 # MySQL database connection details
 mysql_user = 'analyst'
@@ -21,7 +25,6 @@ pg_user = 'postgres'
 pg_password = 'isba_4715'
 pg_host = 'isba-dev-02.ccns0o4cgs58.us-east-1.rds.amazonaws.com'
 pg_db = 'basket_craft'
-# %%
 
 # %%
 #Build connection strings
@@ -34,14 +37,15 @@ mysql_engine = create_engine(mysql_conn_str)
 pg_engine = create_engine(pg_conn_str)
 
 # %%
-# Read products table from MYSQL
-df = pd.read_sql('SELECT * FROM products', mysql_engine)
+# Read orders table from MYSQL
+df = pd.read_sql('SELECT * FROM orders', mysql_engine)
 
 # %%
 df
 
 # %%
 # Write DataFrame to products table in Postgres (raw schema)
-df.to_sql('products', pg_engine, schema='raw', if_exists='replace', index=False)
+df.to_sql('orders', pg_engine, schema='raw', if_exists='replace', index=False)
 # %%
-print(f'{len(df)} records loaded into Postgres products table.')
+print(f'{len(df)} records loaded into Postgres orders table.')
+# %% 
