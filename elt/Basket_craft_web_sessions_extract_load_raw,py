@@ -59,3 +59,5 @@ df.to_sql(
 print(f'{len(df)} records loaded into raw.website_sessions.')
 
 # %%
+
+df

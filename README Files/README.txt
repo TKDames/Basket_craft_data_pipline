@@ -6,5 +6,6 @@ then loads it into a raw schema within a Postgres warehouse, also on RDS. From t
 The project is developed within GitHub Codespaces, with GitHub Actions and Secrets managing automated runs and secure credentials. Finally, the data feeds into Looker Studio, 
 where it's visualized in an interactive dashboard. Every component—from the initial data extraction to the final dashboard—is version-controlled with Git and designed to scale with future datasets and insights.
 
-
+LINK TO Looker
+https://lookerstudio.google.com/s/rBzKkGH3niE 
 
